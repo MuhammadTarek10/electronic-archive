@@ -1,0 +1,92 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+#sidebar {
+  width: 300px;
+  overflow-y: auto;
+  background: #f4f4f4;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#pdf-viewer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.children {
+  display: none;
+  margin-left: 20px;
+  width: 100%;
+}
+
+.folder.expanded > .children {
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  width: 80%;
+  padding: 10px 25px;
+  margin: 5px;
+  border: 1px #000 solid;
+  border-radius: 4px;
+  background-color: #f4f4ff;
+  color: #000;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0a8fbc;
+}
+
+.pdf-controls {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.control-pdf-btn {
+  justify-content: center;
+  background-color: #0a8fbc;
+  padding: 15px 35px;
+  margin: 0 5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.control-pdf-btn:hover {
+  background-color: #0a800f;
+}
+
+.control-pdf-btn.delete {
+  background-color: #ff0000;
+}
+
+.control-pdf-btn.delete:hover {
+  background-color: #ff8c8c;
+}
