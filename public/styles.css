@@ -15,11 +15,31 @@ html {
 }
 
 #sidebar {
-  width: 300px;
+  width: 400px;
   overflow-y: auto;
   background: #f4f4f4;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  gap: 10px;
+}
+
+.header h1 {
+  display: flex;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#sidebar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 #pdf-viewer {
