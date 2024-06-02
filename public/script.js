@@ -18,7 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function createStructure(items, parentExpanded = true) {
     const container = document.createElement("div");
 
-    items.forEach((item) => {
+    // Separate folders and files
+    const folders = items.filter((item) => item.type === "folder");
+    const files = items.filter((item) => item.type === "file");
+
+    // Combine folders and files, with folders coming first
+    const sortedItems = [...folders, ...files];
+
+    sortedItems.forEach((item) => {
       const itemElement = document.createElement("div");
       itemElement.classList.add(item.type);
 

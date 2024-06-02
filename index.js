@@ -78,6 +78,11 @@ app.post("/api/replace-pdf", upload.single("pdfFile"), (req, res) => {
           console.error("Error deleting old PDF file:", err);
           return res.status(500).json({ error: "Failed to replace PDF file" });
         } else {
+          fs.unlink(file.path, (err) => {
+            if (err) {
+              console.error("Error deleting temporary file:", err);
+            }
+          });
           return res.json({
             success: true,
             path: path.join(
