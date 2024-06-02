@@ -30,7 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
       itemElement.classList.add(item.type);
 
       const button = document.createElement("button");
-      button.textContent = item.name;
+      if (item.type === "file") {
+        // Remove .pdf extension
+        button.textContent = item.name.replace(/\.pdf$/, "");
+      } else {
+        button.textContent = item.name;
+      }
       itemElement.appendChild(button);
 
       if (item.type === "folder") {
@@ -143,16 +148,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to refresh the directory structure
   function refreshDirectoryStructure() {
-    // Clear the existing directory structure
-    directoryStructure.innerHTML = "";
     // Fetch and display the updated directory structure
     fetch("/api/structure")
       .then((response) => response.json())
       .then((structure) => {
+        const expandedPaths = getExpandedPaths(directoryStructure);
+        directoryStructure.innerHTML = "";
         directoryStructure.appendChild(createStructure(structure));
+        restoreExpandedPaths(directoryStructure, expandedPaths);
       })
       .catch((error) => {
         console.error("Error fetching directory structure:", error);
       });
+  }
+
+  // Function to get currently expanded paths
+  function getExpandedPaths(container) {
+    const expandedPaths = [];
+    const folders = container.querySelectorAll(".folder");
+    folders.forEach((folder) => {
+      if (folder.classList.contains("expanded")) {
+        const button = folder.querySelector("button");
+        expandedPaths.push(button.textContent.trim());
+      }
+    });
+    return expandedPaths;
+  }
+
+  // Function to restore expanded paths
+  function restoreExpandedPaths(container, expandedPaths) {
+    const folders = container.querySelectorAll(".folder");
+    folders.forEach((folder) => {
+      const button = folder.querySelector("button");
+      if (expandedPaths.includes(button.textContent.trim())) {
+        folder.classList.add("expanded");
+        const arrow = button.querySelector("span");
+        arrow.textContent = " ▼";
+      }
+    });
   }
 });

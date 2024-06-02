@@ -6,6 +6,8 @@ html {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: url("assets/images/war.jpg") center center / cover no-repeat;
+  color: #ffffff; /* Text color to ensure readability on dark background */
 }
 
 .container {
@@ -17,9 +19,33 @@ html {
 #sidebar {
   width: 400px;
   overflow-y: auto;
-  background: #f4f4f4;
+  background: linear-gradient(
+    135deg,
+    #3a3a3a,
+    #2a2a2a
+  ); /* Dark gradient for sidebar */
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Darker shadow for better visibility */
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    #4a4a4a 0%,
+    #3a3a3a 100%
+  ); /* Dark radial gradient for logo container */
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.logo-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .header {
@@ -36,18 +62,13 @@ html {
   font-size: 1.5rem;
 }
 
-#sidebar img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-}
-
 #pdf-viewer {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  height: 100vh;
 }
 
 #pdf-frame {
@@ -71,15 +92,23 @@ button {
   width: 80%;
   padding: 10px 25px;
   margin: 5px;
-  border: 1px #000 solid;
+  border: 1px solid #555; /* Dark border */
   border-radius: 4px;
-  background-color: #f4f4ff;
-  color: #000;
+  background: linear-gradient(
+    135deg,
+    #444,
+    #666
+  ); /* Gradient button background */
+  color: #fff; /* Light text for buttons */
   font-weight: bold;
 }
 
 button:hover {
-  background-color: #0a8fbc;
+  background: linear-gradient(
+    135deg,
+    #666,
+    #888
+  ); /* Lighter gradient on hover */
 }
 
 .pdf-controls {
@@ -90,7 +119,11 @@ button:hover {
 
 .control-pdf-btn {
   justify-content: center;
-  background-color: #0a8fbc;
+  background: linear-gradient(
+    135deg,
+    #444,
+    #666
+  ); /* Gradient background for control buttons */
   padding: 15px 35px;
   margin: 0 5px;
   border-radius: 4px;
@@ -100,13 +133,25 @@ button:hover {
 }
 
 .control-pdf-btn:hover {
-  background-color: #0a800f;
+  background: linear-gradient(
+    135deg,
+    #666,
+    #888
+  ); /* Lighter gradient on hover */
 }
 
 .control-pdf-btn.delete {
-  background-color: #ff0000;
+  background: linear-gradient(
+    135deg,
+    #ff4444,
+    #ff6666
+  ); /* Gradient for delete button */
 }
 
 .control-pdf-btn.delete:hover {
-  background-color: #ff8c8c;
+  background: linear-gradient(
+    135deg,
+    #ff6666,
+    #ff8888
+  ); /* Lighter gradient on hover */
 }
