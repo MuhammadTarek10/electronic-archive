@@ -2,9 +2,13 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
+const cors = require("cors");
+const ip = require("my-ip");
+require("dotenv").config();
 
 const app = express();
-const PORT = 3000;
+app.use(cors({ origin: "*" }));
+
 const basePath = path.join(__dirname, "data");
 
 app.use(express.static("public"));
@@ -111,6 +115,9 @@ app.delete("/api/delete-pdf/:path", (req, res) => {
   });
 });
 
+const PORT = process.env.PORT || 5000;
+const MyIP = ip();
+
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server started on http://${MyIP}:${PORT}`);
 });
