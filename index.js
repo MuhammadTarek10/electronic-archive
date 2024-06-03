@@ -8,8 +8,9 @@ require("dotenv").config();
 
 const app = express();
 app.use(cors({ origin: "*" }));
+const DATA_DIR = process.env.DATA_DIR || "data";
 
-const basePath = path.join(__dirname, "data");
+const basePath = path.join(__dirname, DATA_DIR);
 
 app.use(express.static("public"));
 app.use("/data", express.static(basePath));
@@ -90,7 +91,7 @@ app.post("/api/replace-pdf", upload.single("pdfFile"), (req, res) => {
           return res.json({
             success: true,
             path: path.join(
-              "/data",
+              DATA_DIR,
               newFilePath.split(path.sep).slice(-3).join(path.sep)
             ),
           });
