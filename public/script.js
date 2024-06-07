@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         button.textContent = item.name;
       }
+      button.classList.add(item.type + "-btn"); // Add specific class based on type
       itemElement.appendChild(button);
 
       if (item.type === "folder") {
@@ -45,20 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener("click", () => {
           itemElement.classList.toggle("expanded");
-          arrow.textContent = itemElement.classList.contains("expanded")
-            ? " ▼"
-            : " ▶";
+          arrow.textContent = itemElement.classList.contains("expanded") ? " ▼" : " ▶";
           currentPath = item.path; // Store the current path when folder is clicked
         });
 
         const childrenContainer = document.createElement("div");
         childrenContainer.classList.add("children");
-        childrenContainer.appendChild(
-          createStructure(
-            item.children,
-            parentExpanded && itemElement.classList.contains("expanded")
-          )
-        ); // Pass parentExpanded && itemElement.classList.contains("expanded")
+        childrenContainer.appendChild(createStructure(item.children, parentExpanded && itemElement.classList.contains("expanded"))); // Pass parentExpanded && itemElement.classList.contains("expanded")
         itemElement.appendChild(childrenContainer);
       } else if (item.type === "file") {
         button.addEventListener("click", () => {
@@ -85,20 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Function to handle replacing the current PDF with another PDF
-  document
-    .querySelector(".control-pdf-btn.edit")
-    .addEventListener("click", () => {
-      const fileInput = document.createElement("input");
-      fileInput.type = "file";
-      fileInput.accept = "application/pdf";
-      fileInput.addEventListener("change", function () {
-        const file = this.files[0];
-        if (file) {
-          replacePDF(file, currentPath); // Use the currentPath variable
-        }
-      });
-      fileInput.click();
+  document.querySelector(".control-pdf-btn.edit").addEventListener("click", () => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "application/pdf";
+    fileInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        replacePDF(file, currentPath); // Use the currentPath variable
+      }
     });
+    fileInput.click();
+  });
 
   // Function to handle deleting the current PDF
   deletePdfButton.addEventListener("click", () => {

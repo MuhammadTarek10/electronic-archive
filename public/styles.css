@@ -6,8 +6,8 @@ html {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: url("assets/images/war.jpg") center center / cover no-repeat;
-  color: #ffffff; /* Text color to ensure readability on dark background */
+  background: url("war.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .container {
@@ -18,16 +18,10 @@ html {
 
 #sidebar {
   width: 400px;
-  height: 100%;
-  overflow: hidden;
   overflow-y: auto;
-  background: linear-gradient(
-    135deg,
-    #3a3a3a,
-    #2a2a2a
-  ); /* Dark gradient for sidebar */
+  background: rgba(34, 34, 34, 0.9); /* Semi-transparent dark background */
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Darker shadow for better visibility */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.7);
 }
 
 .logo-container {
@@ -35,11 +29,7 @@ html {
   justify-content: center;
   align-items: center;
   height: 200px;
-  background: radial-gradient(
-    circle,
-    #4a4a4a 0%,
-    #3a3a3a 100%
-  ); /* Dark radial gradient for logo container */
+  background: rgba(34, 34, 34, 0.8); /* Semi-transparent dark background */
   margin-bottom: 20px;
   border-radius: 10px;
 }
@@ -62,6 +52,7 @@ html {
   display: flex;
   text-align: center;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 #pdf-viewer {
@@ -70,7 +61,6 @@ html {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  height: 100vh;
 }
 
 #pdf-frame {
@@ -89,28 +79,52 @@ html {
   display: block;
 }
 
+.folder-btn {
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: #555; /* Dark background for folders */
+  color: #fff;
+  font-weight: bold;
+}
+
+.file-btn {
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(0, 255, 0, 0.1); /* Lighter background for files */
+  color: #fff;
+  font-weight: bold;
+}
+
+.folder-btn:hover {
+  background-color: #777; /* Lighter gradient on hover */
+}
+
+.file-btn:hover {
+  background-color: #aaa; /* Lighter gradient on hover */
+}
+
 button {
   cursor: pointer;
   width: 80%;
   padding: 10px 25px;
   margin: 5px;
-  border: 1px solid #555; /* Dark border */
+  border: 1px #000 solid;
   border-radius: 4px;
-  background: linear-gradient(
-    135deg,
-    #444,
-    #666
-  ); /* Gradient button background */
-  color: #fff; /* Light text for buttons */
+  background-color: #f4f4ff;
+  color: #000;
   font-weight: bold;
 }
 
 button:hover {
-  background: linear-gradient(
-    135deg,
-    #666,
-    #888
-  ); /* Lighter gradient on hover */
+  background-color: #0a8fbc;
 }
 
 .pdf-controls {
@@ -121,11 +135,7 @@ button:hover {
 
 .control-pdf-btn {
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    #444,
-    #666
-  ); /* Gradient background for control buttons */
+  background-color: #0a8fbc;
   padding: 15px 35px;
   margin: 0 5px;
   border-radius: 4px;
@@ -135,25 +145,13 @@ button:hover {
 }
 
 .control-pdf-btn:hover {
-  background: linear-gradient(
-    135deg,
-    #666,
-    #888
-  ); /* Lighter gradient on hover */
+  background-color: #0a800f;
 }
 
 .control-pdf-btn.delete {
-  background: linear-gradient(
-    135deg,
-    #ff4444,
-    #ff6666
-  ); /* Gradient for delete button */
+  background-color: #ff0000;
 }
 
 .control-pdf-btn.delete:hover {
-  background: linear-gradient(
-    135deg,
-    #ff6666,
-    #ff8888
-  ); /* Lighter gradient on hover */
+  background-color: #ff8c8c;
 }
